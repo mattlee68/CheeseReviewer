@@ -29,5 +29,15 @@ namespace CheeseReviewer
 
         }
 
+        void OnAdd(object sender, ValueChangedEventArgs args)
+        {
+
+        }
+
+        void TakePhoto(object sender, ValueChangedEventArgs args)
+        {
+
+        }
+
     }
 }

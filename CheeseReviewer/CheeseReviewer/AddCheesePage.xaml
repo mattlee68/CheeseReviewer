@@ -1,27 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CheeseReviewer.AddCheesePage">
+             x:Class="CheeseReviewer.AddCheesePage"
+             Title="Add Review">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"
-                     Orientation="Vertical"
-                     Spacing="15" Padding="20,20,20,20">
-            <Label Text="Add Cheese"  VerticalOptions="Center" HorizontalOptions="Center">
-                <Label.FontAttributes>
-                    Bold
-                </Label.FontAttributes>
-                <Label.FontSize>
-                    25
-                </Label.FontSize>
-            </Label>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         Spacing="15" Padding="20,20,20,20">
 
-            <Label Text="Rating"></Label>
-            <Slider ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10"/>
+                <Label Text="Brand"></Label>
+                <Entry x:Name="Brand" HorizontalOptions="FillAndExpand" Placeholder="e.g. Mainland, Kapiti"/>
 
-            <Label Text="Extra Comments"></Label>
-            <Editor TextChanged="EditorTextChanged"/>
+                <Label Text="Type of Cheese"></Label>
+                <Entry x:Name="Type" HorizontalOptions="FillAndExpand" Placeholder="e.g. Edam, Cheddar"/>
 
-        </StackLayout>
+                <Label Text="Purchase Location"></Label>
+                <Entry x:Name="Location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
+
+                <Label Text="Price"></Label>
+                <Entry Keyboard="Numeric" x:Name="Price" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
+
+                <Label Text="Rating"></Label>
+                <Slider ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10"/>
+
+                <Label Text="Extra Comments"></Label>
+                <Editor Keyboard="Chat" TextChanged="EditorTextChanged"/>
+
+                <Button x:Name="photoButton" Text="Take Photo" Clicked="TakePhoto" />
+                <Button x:Name="addCheese" Text="Review" Clicked="OnAdd" />
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
