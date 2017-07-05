@@ -15,7 +15,13 @@
                     25
                 </Label.FontSize>
             </Label>
-            
+
+            <Label Text="Rating"></Label>
+            <Slider ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10"/>
+
+            <Label Text="Extra Comments"></Label>
+            <Editor TextChanged="EditorTextChanged"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

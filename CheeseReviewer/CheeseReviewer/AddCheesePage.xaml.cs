@@ -10,11 +10,24 @@ using Xamarin.Forms.Xaml;
 namespace CheeseReviewer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ViewReviewsPage : ContentPage
+	public partial class AddCheesePage : ContentPage
 	{
-		public ViewReviewsPage ()
+		public AddCheesePage ()
 		{
 			InitializeComponent ();
-		}
-	}
+        }
+
+        void EditorTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var oldText = e.OldTextValue;
+            var newText = e.NewTextValue;
+        }
+
+
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        {
+
+        }
+
+    }
 }

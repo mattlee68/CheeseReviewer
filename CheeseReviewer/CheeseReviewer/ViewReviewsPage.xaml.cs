@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace CheeseReviewer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddCheesePage : ContentPage
+	public partial class ViewReviewsPage : ContentPage
 	{
-		public AddCheesePage ()
+		public ViewReviewsPage ()
 		{
 			InitializeComponent ();
 		}
