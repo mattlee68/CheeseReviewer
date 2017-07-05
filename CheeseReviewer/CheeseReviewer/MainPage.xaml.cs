@@ -14,14 +14,14 @@ namespace CheeseReviewer
             InitializeComponent();
         }
 
-        void OnView(object sender, EventArgs e)
+        async void OnView(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ViewReviewsPage());
         }
 
-        void OnAdd(object sender, EventArgs e)
+        async void OnAdd(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new AddCheesePage());
         }
     }
 }

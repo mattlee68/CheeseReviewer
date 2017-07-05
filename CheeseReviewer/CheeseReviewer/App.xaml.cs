@@ -13,7 +13,7 @@ namespace CheeseReviewer
         {
             InitializeComponent();
 
-            MainPage = new CheeseReviewer.MainPage();
+            MainPage = new NavigationPage(new CheeseReviewer.MainPage());
         }
 
         protected override void OnStart()
