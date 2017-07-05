@@ -45,25 +45,7 @@ namespace CheeseReviewer
 
         void OnAdd(object sender, ValueChangedEventArgs args)
         {
-            if (String.IsNullOrEmpty(brand.Text))
-            {
-                DisplayAlert("Cheese Brand Empty", "You need to fill out the cheese's brand to proceed", "OK");
-                return;
-            }else if (String.IsNullOrEmpty(type.Text))
-            {
-                DisplayAlert("Cheese Type Empty", "You need to fill out the cheese's type to proceed", "OK");
-                return;
-            }
-            else if (String.IsNullOrEmpty(location.Text))
-            {
-                DisplayAlert("Cheese Purchase Location Empty", "You need to fill out the cheese's purchase location to proceed", "OK");
-                return;
-            }
-            else if (String.IsNullOrEmpty(price.Text))
-            {
-                DisplayAlert("Cheese Price Empty", "You need to fill out the cheese's price to proceed", "OK");
-                return;
-            }
+            if (!validateInputs()) return;
             cheeseBrand = brand.Text;
             cheeseType = type.Text;
             cheeseComments = comments.Text;
@@ -76,6 +58,31 @@ namespace CheeseReviewer
         void TakePhoto(object sender, ValueChangedEventArgs args)
         {
 
+        }
+
+        Boolean validateInputs()
+        {
+            if (String.IsNullOrEmpty(brand.Text))
+            {
+                DisplayAlert("Cheese Brand Empty", "You need to fill out the cheese's brand to proceed", "OK");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(type.Text))
+            {
+                DisplayAlert("Cheese Type Empty", "You need to fill out the cheese's type to proceed", "OK");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(location.Text))
+            {
+                DisplayAlert("Cheese Purchase Location Empty", "You need to fill out the cheese's purchase location to proceed", "OK");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(price.Text))
+            {
+                DisplayAlert("Cheese Price Empty", "You need to fill out the cheese's price to proceed", "OK");
+                return false;
+            }
+            return true;
         }
 
     }
