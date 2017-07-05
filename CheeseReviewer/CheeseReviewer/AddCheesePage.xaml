@@ -11,22 +11,26 @@
                          Spacing="15" Padding="20,20,20,20">
 
                 <Label Text="Brand"></Label>
-                <Entry x:Name="Brand" HorizontalOptions="FillAndExpand" Placeholder="e.g. Mainland, Kapiti"/>
+                <Entry x:Name="brand" HorizontalOptions="FillAndExpand" Placeholder="e.g. Mainland, Kapiti"/>
 
                 <Label Text="Type of Cheese"></Label>
-                <Entry x:Name="Type" HorizontalOptions="FillAndExpand" Placeholder="e.g. Edam, Cheddar"/>
+                <Entry x:Name="type" HorizontalOptions="FillAndExpand" Placeholder="e.g. Edam, Cheddar"/>
 
                 <Label Text="Purchase Location"></Label>
-                <Entry x:Name="Location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
+                <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
 
                 <Label Text="Price"></Label>
-                <Entry Keyboard="Numeric" x:Name="Price" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
+                <Entry Keyboard="Numeric" x:Name="price" HorizontalOptions="FillAndExpand"/>
 
                 <Label Text="Rating"></Label>
-                <Slider ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10"/>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal" Padding="0,3,3,0">
+                    <Slider x:Name="slider" ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10" HorizontalOptions="FillAndExpand" Value="5"/>
+                    <Label x:Name="sliderValue" HorizontalOptions="Fill"/>
+                </StackLayout>
 
                 <Label Text="Extra Comments"></Label>
-                <Editor Keyboard="Chat" TextChanged="EditorTextChanged"/>
+                <Editor x:Name="comments" Keyboard="Chat" TextChanged="EditorTextChanged"/>
 
                 <Button x:Name="photoButton" Text="Take Photo" Clicked="TakePhoto" />
                 <Button x:Name="addCheese" Text="Review" Clicked="OnAdd" />

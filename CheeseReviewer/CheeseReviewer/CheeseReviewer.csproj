@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DecimalConverter.cs" />
     <Compile Include="ViewReviewsPage.xaml.cs">
       <DependentUpon>ViewReviewsPage.xaml</DependentUpon>
     </Compile>
