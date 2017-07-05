@@ -13,5 +13,15 @@ namespace CheeseReviewer
         {
             InitializeComponent();
         }
+
+        void OnView(object sender, EventArgs e)
+        {
+
+        }
+
+        void OnAdd(object sender, EventArgs e)
+        {
+
+        }
     }
 }

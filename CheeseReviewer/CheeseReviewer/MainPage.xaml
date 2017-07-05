@@ -4,8 +4,22 @@
              xmlns:local="clr-namespace:CheeseReviewer"
              x:Class="CheeseReviewer.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Spacing="15">
+        <Label Text="Cheese Reviewer"  VerticalOptions="Center" HorizontalOptions="Center">
+            <Label.FontAttributes>
+                Bold
+            </Label.FontAttributes>
+            <Label.FontSize>
+                30
+            </Label.FontSize>
+        </Label>
+        <Button x:Name="viewButton" Text="View Reviewed Cheeses" Clicked="OnView" />
+        <Button x:Name="addButton" Text="Add Review" Clicked="OnAdd" />
+    </StackLayout>
+
+
 
 </ContentPage>
