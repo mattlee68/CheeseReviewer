@@ -1,21 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CheeseReviewer.ViewReviewsPage">
+             x:Class="CheeseReviewer.ViewReviewsPage"
+             Title="View Reviews">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
                      Orientation="Vertical"
                      Spacing="15" Padding="20,20,20,20">
-            <Label Text="View Cheeses"  VerticalOptions="Center" HorizontalOptions="Center">
-                <Label.FontAttributes>
-                    Bold
-                </Label.FontAttributes>
-                <Label.FontSize>
-                    25
-                </Label.FontSize>
-            </Label>
-            
+            <ListView x:Name="CheeseReviewerList" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Brand, StringFormat='Brand: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
+                                <Label Text="{Binding Type, StringFormat='Type: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
+                                <Label Text="{Binding Location, StringFormat='Purchased From: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0"/>
+                                <Label Text="{Binding Price, StringFormat='{0:C}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
+                                <Label Text="{Binding Rating, StringFormat='Rating {0:N1}/10.0'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
