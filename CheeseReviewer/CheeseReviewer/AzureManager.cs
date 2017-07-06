@@ -41,5 +41,10 @@ namespace CheeseReviewer
         {
             return await this.cheeseReviewTable.ToListAsync();
         }
+
+        public async Task PostCheeseReviewerInformation(CheeseReviewerModel cheeseReviewerModel)
+        {
+            await this.cheeseReviewTable.InsertAsync(cheeseReviewerModel);
+        }
     }
 }

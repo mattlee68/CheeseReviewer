@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheeseReviewer.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +10,16 @@ using Xamarin.Forms.Xaml;
 
 namespace CheeseReviewer
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddCheesePage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddCheesePage : ContentPage
+    {
 
-        string cheeseBrand;
-        string cheeseType;
-        string cheeseComments;
-        string cheeseLocation;
-        double cheesePrice;
         int cheeseRating;
 
-		public AddCheesePage ()
-		{
-			InitializeComponent ();
+
+        public AddCheesePage()
+        {
+            InitializeComponent();
             price.SetBinding(Entry.TextProperty, new Binding("Price", converter: new DecimalConverter()));
         }
 
@@ -46,18 +43,31 @@ namespace CheeseReviewer
         void OnAdd(object sender, ValueChangedEventArgs args)
         {
             if (!validateInputs()) return;
-            cheeseBrand = brand.Text;
-            cheeseType = type.Text;
-            cheeseComments = comments.Text;
-            cheeseLocation = location.Text;
-            cheesePrice = Double.Parse(price.Text);
-
-
+            postReviewAsync();
         }
 
         void TakePhoto(object sender, ValueChangedEventArgs args)
         {
 
+        }
+
+        async Task postReviewAsync()
+        {
+            CheeseReviewerModel model = new CheeseReviewerModel()
+            {
+                Brand = brand.Text,
+                Type = type.Text,
+                Location = location.Text,
+                Price = Double.Parse(price.Text),
+                Rating = cheeseRating,
+                Comments = comments.Text
+            };
+
+            await AzureManager.AzureManagerInstance.PostCheeseReviewerInformation(model);
+
+            await DisplayAlert("Success", "Successfully reviewed a cheese!", "OK");
+
+            await this.Navigation.PopAsync();
         }
 
         Boolean validateInputs()
@@ -84,6 +94,5 @@ namespace CheeseReviewer
             }
             return true;
         }
-
     }
 }
