@@ -32,6 +32,7 @@
                 <Label Text="Extra Comments"></Label>
                 <Editor x:Name="comments" Keyboard="Chat" TextChanged="EditorTextChanged"/>
 
+                <Label Text="Take a photo of your face and we can tell you how you feel about this cheese!"></Label>
                 <Button x:Name="photoButton" Text="Take Photo" Clicked="TakePhoto" />
                 <Button x:Name="addCheese" Text="Review" Clicked="OnAdd" />
 
