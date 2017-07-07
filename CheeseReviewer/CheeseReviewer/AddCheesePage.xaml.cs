@@ -1,4 +1,6 @@
 ﻿using CheeseReviewer.DataModels;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +44,8 @@ namespace CheeseReviewer
 
         void OnAdd(object sender, ValueChangedEventArgs args)
         {
-            if (!validateInputs()) return;
-            postReviewAsync();
+            if (!ValidateInputs()) return;
+            PostReviewAsync();
         }
 
         void TakePhoto(object sender, ValueChangedEventArgs args)
@@ -51,7 +53,7 @@ namespace CheeseReviewer
 
         }
 
-        async Task postReviewAsync()
+        async Task PostReviewAsync()
         {
             CheeseReviewerModel model = new CheeseReviewerModel()
             {
@@ -70,7 +72,7 @@ namespace CheeseReviewer
             await this.Navigation.PopAsync();
         }
 
-        Boolean validateInputs()
+        Boolean ValidateInputs()
         {
             if (String.IsNullOrEmpty(brand.Text))
             {
@@ -93,6 +95,34 @@ namespace CheeseReviewer
                 return false;
             }
             return true;
+        }
+
+        private async void LoadCamera(object sender, EventArgs e)
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("No Camera", ":( No camera available.", "OK");
+                return;
+            }
+
+            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            {
+                PhotoSize = PhotoSize.Medium,
+                Directory = "Sample",
+                Name = $"{DateTime.UtcNow}.jpg"
+            });
+
+            if (file == null)
+                return;
+
+            image.Source = ImageSource.FromStream(() =>
+            {
+                return file.GetStream();
+            });
+
+            file.Dispose();
         }
     }
 }
