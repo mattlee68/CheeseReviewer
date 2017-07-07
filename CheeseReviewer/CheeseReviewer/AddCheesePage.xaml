@@ -34,6 +34,7 @@
 
                 <Label Text="Take a photo of your face and we can tell you how you feel about this cheese!"></Label>
                 <Button x:Name="photoButton" Text="Take Photo and Analyse Face" Clicked="LoadCamera" />
+                <Label x:Name="emotionResultLabel"></Label>
 
                 <Image x:Name="image"/>
 

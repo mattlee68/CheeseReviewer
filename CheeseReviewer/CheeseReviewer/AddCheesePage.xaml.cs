@@ -3,12 +3,17 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.ProjectOxford.Emotion;
+using Microsoft.ProjectOxford.Emotion.Contract;
 
 namespace CheeseReviewer
 {
@@ -122,7 +127,49 @@ namespace CheeseReviewer
                 return file.GetStream();
             });
 
-            file.Dispose();
+            //file.Dispose();
+            await MakePredictionRequest(file);
+        }
+
+        static byte[] GetImageAsByteArray(MediaFile file)
+        {
+            var stream = file.GetStream();
+            BinaryReader binaryReader = new BinaryReader(stream);
+            return binaryReader.ReadBytes((int)stream.Length);
+        }
+
+        async Task MakePredictionRequest(MediaFile file)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "2cc575735ee14d399ab05aa48bf0f305");
+
+            string url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
+
+            HttpResponseMessage response;
+            string responseContent;
+
+            //var emotionClient = new EmotionServiceClient("8a17bba660a14215ae411aa120b41291");
+
+
+            byte[] byteData = GetImageAsByteArray(file);
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+                response = await client.PostAsync(url, content);
+                responseContent = response.Content.ReadAsStringAsync().Result;
+                //Emotion[] emotionResult = await emotionClient.RecognizeAsync(content.ToString());
+                //if (emotionResult.Any())
+                //{
+                //    emotionResultLabel.Text = emotionResult.FirstOrDefault().Scores.ToRankedList().FirstOrDefault().Key;
+                //}
+            }
+
+            Debug.WriteLine(emotionResultLabel.Text);
+
+            DisplayAlert("YO", "Yo", "OK");
+
+
         }
     }
 }
