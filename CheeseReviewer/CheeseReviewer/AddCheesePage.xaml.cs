@@ -14,6 +14,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microsoft.ProjectOxford.Emotion;
 using Microsoft.ProjectOxford.Emotion.Contract;
+using Newtonsoft.Json;
 
 namespace CheeseReviewer
 {
@@ -22,6 +23,9 @@ namespace CheeseReviewer
     {
 
         int cheeseRating;
+
+        private const string APIKey = "8a17bba660a14215ae411aa120b41291";
+        private const string url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0";
 
 
         public AddCheesePage()
@@ -140,35 +144,34 @@ namespace CheeseReviewer
 
         async Task MakePredictionRequest(MediaFile file)
         {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "2cc575735ee14d399ab05aa48bf0f305");
-
-            string url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
-
-            HttpResponseMessage response;
-            string responseContent;
-
-            //var emotionClient = new EmotionServiceClient("8a17bba660a14215ae411aa120b41291");
-
-
-            byte[] byteData = GetImageAsByteArray(file);
-
-            using (var content = new ByteArrayContent(byteData))
+            EmotionServiceClient emotionServiceClient = new EmotionServiceClient(APIKey, url);
+            try
             {
-                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
-                response = await client.PostAsync(url, content);
-                responseContent = response.Content.ReadAsStringAsync().Result;
-                //Emotion[] emotionResult = await emotionClient.RecognizeAsync(content.ToString());
-                //if (emotionResult.Any())
-                //{
-                //    emotionResultLabel.Text = emotionResult.FirstOrDefault().Scores.ToRankedList().FirstOrDefault().Key;
-                //}
+                byte[] byteData = GetImageAsByteArray(file);
+
+                using (Stream stream = new MemoryStream(byteData))
+                {
+                    Emotion[] emotionResult = await emotionServiceClient.RecognizeAsync(stream);
+                    if (emotionResult.Any())
+                    {
+                        string result = emotionResult.FirstOrDefault().Scores.ToRankedList().FirstOrDefault().Key;
+                        emotionResultLabel.Text = result;
+                       DisplayAlert("Success", "You look " +result, "Ok");
+                    }
+                   
+
+                }
+                
+            }catch(Exception e)
+            {
+                Debug.WriteLine("Something went wrong with the key");
+                Debug.WriteLine(e);
             }
 
-            Debug.WriteLine(emotionResultLabel.Text);
+
 
             DisplayAlert("YO", "Yo", "OK");
-
+            return;
 
         }
     }

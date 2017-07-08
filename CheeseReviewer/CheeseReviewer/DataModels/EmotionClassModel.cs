@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace CheeseReviewer.DataModels
 {
-    public class EmotionClass
+    public class EmotionClassModel
     {
-        
+        public FaceRectangle faceRectagle {get;set;}
+        public Score score { get; set; }
+
     }
 
-    public class FaceRectangleModel
+    public class FaceRectangle
     {
         public int left { get; set; }
         public int top { get; set; }
@@ -19,7 +21,7 @@ namespace CheeseReviewer.DataModels
         public int height { get; set; }
     }
 
-    public class ScoresModel
+    public class Score
     {
         public double anger { get; set; }
         public double contempt { get; set; }
