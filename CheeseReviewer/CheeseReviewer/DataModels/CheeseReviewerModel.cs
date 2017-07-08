@@ -29,5 +29,8 @@ namespace CheeseReviewer.DataModels
 
         [JsonProperty(PropertyName = "Rating")]
         public int Rating { get; set; }
+
+        [JsonProperty(PropertyName = "Emotion")]
+        public string Emotion{ get; set; }
     }
 }

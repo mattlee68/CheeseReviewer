@@ -38,7 +38,6 @@
     <Compile Include="AzureManager.cs" />
     <Compile Include="DataModels\CheeseReviewerModel.cs" />
     <Compile Include="DecimalConverter.cs" />
-    <Compile Include="DataModels\EmotionClassModel.cs" />
     <Compile Include="ViewReviewsPage.xaml.cs">
       <DependentUpon>ViewReviewsPage.xaml</DependentUpon>
     </Compile>

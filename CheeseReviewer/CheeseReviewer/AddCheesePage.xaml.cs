@@ -23,6 +23,7 @@ namespace CheeseReviewer
     {
 
         int cheeseRating;
+        string emotion;
 
         private const string APIKey = "8a17bba660a14215ae411aa120b41291";
         private const string url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0";
@@ -71,7 +72,8 @@ namespace CheeseReviewer
                 Location = location.Text,
                 Price = Double.Parse(price.Text),
                 Rating = cheeseRating,
-                Comments = comments.Text
+                Comments = comments.Text,
+                Emotion = emotion
             };
 
             await AzureManager.AzureManagerInstance.PostCheeseReviewerInformation(model);
@@ -155,8 +157,13 @@ namespace CheeseReviewer
                     if (emotionResult.Any())
                     {
                         string result = emotionResult.FirstOrDefault().Scores.ToRankedList().FirstOrDefault().Key;
+                        emotion = result;
                         emotionResultLabel.Text = result;
-                       DisplayAlert("Success", "You look " +result, "Ok");
+                        DisplayAlert("Success", "Our magical algorithm detected your expression as: " + result, "Ok");
+                    }
+                    else
+                    {
+                        DisplayAlert("Sorry", "We could not identify an emotion with your face", "Ok");
                     }
                    
 
@@ -167,10 +174,6 @@ namespace CheeseReviewer
                 Debug.WriteLine("Something went wrong with the key");
                 Debug.WriteLine(e);
             }
-
-
-
-            DisplayAlert("YO", "Yo", "OK");
             return;
 
         }
