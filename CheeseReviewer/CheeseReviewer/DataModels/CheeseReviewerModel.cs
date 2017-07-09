@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿/// <summary>
+/// This class is the model for interacting with the Easy Table stored on Azure
+/// </summary>
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +37,7 @@ namespace CheeseReviewer.DataModels
         [JsonProperty(PropertyName = "Emotion")]
         public string Emotion{ get; set; }
 
+        // Used for getting the Brand and Type together in the ViewReviewsPage.Xaml.
         public string BrandAndType { get { return Brand + " " + Type; } }
     }
 }

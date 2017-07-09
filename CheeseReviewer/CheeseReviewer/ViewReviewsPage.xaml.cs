@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+/// <summary>
+/// Simple page that handles the "View Reviews" of the Cheese Reviewer application.
+/// </summary>
+
 namespace CheeseReviewer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,6 +27,9 @@ namespace CheeseReviewer
             getCheeses();
         }
 
+        /// <summary>
+        /// Gets the cheese list to populate the list in the Xaml file.
+        /// </summary>
         async void getCheeses()
         {
             List<CheeseReviewerModel> cheeseReviewerInformation = await AzureManager.AzureManagerInstance.GetCheeseReviewInformation();

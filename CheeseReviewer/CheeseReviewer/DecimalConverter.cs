@@ -5,10 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+/// <summary>
+/// This class ensures only decimals are allowed in the Price entry form.
+/// </summary>
+
 namespace CheeseReviewer
 {
     public class DecimalConverter : IValueConverter
-    {
+    
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is decimal)

@@ -36,7 +36,7 @@
                 </StackLayout>
 
                 <Label Text="Extra Comments" TextColor="#FFFFFF"></Label>
-                <Editor x:Name="comments" Keyboard="Chat" TextChanged="EditorTextChanged" TextColor="#FFFFFF"/>
+                <Editor x:Name="comments" Keyboard="Chat" TextColor="#FFFFFF"/>
 
                 <Label Text="Take a photo of your face and we can tell you how you feel about this cheese!" TextColor="#FFFFFF"></Label>
                 <Button x:Name="photoButton" Text="Take Photo and Analyse Face" Clicked="LoadCamera" />
