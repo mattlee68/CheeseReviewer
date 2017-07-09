@@ -39,7 +39,8 @@ namespace CheeseReviewer
 
         public async Task<List<CheeseReviewerModel>> GetCheeseReviewInformation()
         {
-            return await this.cheeseReviewTable.ToListAsync();
+            //return await this.cheeseReviewTable.ToListAsync();
+            return await this.cheeseReviewTable.OrderByDescending(CheeseReviewerModel => CheeseReviewerModel.Rating).ThenBy(CheeseReviewerModel => CheeseReviewerModel.Brand).ToListAsync();
         }
 
         public async Task PostCheeseReviewerInformation(CheeseReviewerModel cheeseReviewerModel)

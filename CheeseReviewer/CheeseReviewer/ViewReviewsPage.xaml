@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CheeseReviewer.ViewReviewsPage"
-             Title="View Reviews">
+             Title="View Reviews"
+             BackgroundColor="#342f2c">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
@@ -13,11 +14,12 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical" Padding="0,20,0,20">
-                                <Label Text="{Binding BrandAndType, StringFormat='{0}'}" VerticalTextAlignment="Center" Font="Bold,20" Margin="20,0,0,0" />
-                                <Label Text="{Binding Location, StringFormat='Purchased From: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0"/>
-                                <Label Text="{Binding Price, StringFormat='{0:C}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
-                                <Label Text="{Binding Rating, StringFormat='Rating {0:N1}/10.0'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
-                                <Label Text="{Binding Emotion, StringFormat='Emotion: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" />
+                                <Label Text="{Binding BrandAndType, StringFormat='{0}'}" VerticalTextAlignment="Center" Font="Bold,20" Margin="20,0,0,0" TextColor="#FFFFFF"/>
+                                <Label Text="{Binding Location, StringFormat='Purchased From: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" TextColor="#FFFFFF"/>
+                                <Label Text="{Binding Price, StringFormat='{0:C}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" TextColor="#FFFFFF"/>
+                                <Label Text="{Binding Rating, StringFormat='Rating {0:N1}/10.0'}" VerticalTextAlignment="Center" Margin="20,0,0,0" TextColor="#FFFFFF"/>
+                                <Label Text="{Binding Emotion, StringFormat='Emotion: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" TextColor="#FFFFFF"/>
+                                <Label Text="{Binding Comments, StringFormat='Comments: {0}'}" VerticalTextAlignment="Center" Margin="20,0,0,0" TextColor="#FFFFFF"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

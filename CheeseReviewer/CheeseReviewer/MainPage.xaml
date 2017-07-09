@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CheeseReviewer"
-             x:Class="CheeseReviewer.MainPage">
+             x:Class="CheeseReviewer.MainPage"
+             BackgroundImage="bg.png">
 
     <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
@@ -16,6 +17,9 @@
             <Label.FontSize>
                 30
             </Label.FontSize>
+            <Label.TextColor>
+                #FFFFFF
+            </Label.TextColor>
         </Label>
         <Button x:Name="viewButton" Text="View Reviewed Cheeses" Clicked="OnView" />
         <Button x:Name="addButton" Text="Add Review" Clicked="OnAdd" />

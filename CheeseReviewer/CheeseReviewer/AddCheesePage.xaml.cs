@@ -23,7 +23,7 @@ namespace CheeseReviewer
     {
 
         int cheeseRating;
-        string emotion;
+        string emotion = "None";
 
         private const string APIKey = "8a17bba660a14215ae411aa120b41291";
         private const string url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0";

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CheeseReviewer.AddCheesePage"
-             Title="Add Review">
+             Title="Add Review"
+             BackgroundColor="#342f2c">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand"
@@ -10,31 +11,31 @@
                          Orientation="Vertical"
                          Spacing="15" Padding="20,20,20,20">
 
-                <Label Text="Brand"></Label>
-                <Entry x:Name="brand" HorizontalOptions="FillAndExpand" Placeholder="e.g. Mainland, Kapiti"/>
+                <Label Text="Brand" TextColor="#FFFFFF"></Label>
+                <Entry x:Name="brand" HorizontalOptions="FillAndExpand" Placeholder="e.g. Mainland, Kapiti" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
 
-                <Label Text="Type of Cheese"></Label>
-                <Entry x:Name="type" HorizontalOptions="FillAndExpand" Placeholder="e.g. Edam, Cheddar"/>
+                <Label Text="Type of Cheese" TextColor="#FFFFFF"></Label>
+                <Entry x:Name="type" HorizontalOptions="FillAndExpand" Placeholder="e.g. Edam, Cheddar" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
 
-                <Label Text="Purchase Location"></Label>
-                <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown"/>
+                <Label Text="Purchase Location" TextColor="#FFFFFF"></Label>
+                <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
 
-                <Label Text="Price"></Label>
-                <Entry Keyboard="Numeric" x:Name="price" HorizontalOptions="FillAndExpand"/>
+                <Label Text="Price" TextColor="#FFFFFF"></Label>
+                <Entry Keyboard="Numeric" x:Name="price" HorizontalOptions="FillAndExpand" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
 
-                <Label Text="Rating"></Label>
+                <Label Text="Rating" TextColor="#FFFFFF"></Label>
                 <StackLayout HorizontalOptions="FillAndExpand"
                          Orientation="Horizontal" Padding="0,3,3,0">
                     <Slider x:Name="slider" ValueChanged="OnSliderValueChanged" Minimum="0" Maximum="10" HorizontalOptions="FillAndExpand" Value="5"/>
-                    <Label x:Name="sliderValue" HorizontalOptions="Fill"/>
+                    <Label x:Name="sliderValue" HorizontalOptions="Fill" TextColor="#FFFFFF"/>
                 </StackLayout>
 
-                <Label Text="Extra Comments"></Label>
-                <Editor x:Name="comments" Keyboard="Chat" TextChanged="EditorTextChanged"/>
+                <Label Text="Extra Comments" TextColor="#FFFFFF"></Label>
+                <Editor x:Name="comments" Keyboard="Chat" TextChanged="EditorTextChanged" TextColor="#FFFFFF"/>
 
-                <Label Text="Take a photo of your face and we can tell you how you feel about this cheese!"></Label>
+                <Label Text="Take a photo of your face and we can tell you how you feel about this cheese!" TextColor="#FFFFFF"></Label>
                 <Button x:Name="photoButton" Text="Take Photo and Analyse Face" Clicked="LoadCamera" />
-                <Label x:Name="emotionResultLabel"></Label>
+                <Label x:Name="emotionResultLabel" TextColor="#FFFFFF"></Label>
 
                 <Image x:Name="image"/>
 
