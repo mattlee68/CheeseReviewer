@@ -21,7 +21,12 @@
                 <Entry x:Name="location" HorizontalOptions="FillAndExpand" Placeholder="e.g. New World, Countdown" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
 
                 <Label Text="Price" TextColor="#FFFFFF"></Label>
-                <Entry Keyboard="Numeric" x:Name="price" HorizontalOptions="FillAndExpand" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal" Padding="0,3,0,0">
+                    <Label Text="$" TextColor="#FFFFFF" HorizontalOptions="Fill" VerticalOptions="Center"/>
+                    <Entry Keyboard="Numeric" x:Name="price" HorizontalOptions="FillAndExpand" TextColor="#FFFFFF" PlaceholderColor="#cecec8"/>
+                </StackLayout>
+
 
                 <Label Text="Rating" TextColor="#FFFFFF"></Label>
                 <StackLayout HorizontalOptions="FillAndExpand"

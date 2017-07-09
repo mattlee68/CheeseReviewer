@@ -33,6 +33,7 @@ namespace CheeseReviewer
         {
             InitializeComponent();
             price.SetBinding(Entry.TextProperty, new Binding("Price", converter: new DecimalConverter()));
+            emotionResultLabel.Text = "Emotion: " +emotion;
         }
 
 
@@ -158,7 +159,7 @@ namespace CheeseReviewer
                     {
                         string result = emotionResult.FirstOrDefault().Scores.ToRankedList().FirstOrDefault().Key;
                         emotion = result;
-                        emotionResultLabel.Text = result;
+                        emotionResultLabel.Text = "Emotion Result: " +result;
                         DisplayAlert("Success", "Our magical algorithm detected your expression as: " + result, "Ok");
                     }
                     else
