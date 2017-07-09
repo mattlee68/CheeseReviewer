@@ -8,5 +8,6 @@ An application that reviews the quality of cheeses.
 
 <h3>Image Resources</h3>
 All images are used with the permission of the author.
+
 *  A cheese slice: https://upload.wikimedia.org/wikipedia/en/a/a5/Cheese.png
 *  Cheese Food Edam Cheese Slice Yellow: https://pixabay.com/p-160099
