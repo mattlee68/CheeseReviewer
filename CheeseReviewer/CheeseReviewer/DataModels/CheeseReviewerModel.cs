@@ -32,5 +32,7 @@ namespace CheeseReviewer.DataModels
 
         [JsonProperty(PropertyName = "Emotion")]
         public string Emotion{ get; set; }
+
+        public string BrandAndType { get { return Brand + " " + Type; } }
     }
 }
